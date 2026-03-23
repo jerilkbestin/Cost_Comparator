@@ -1,0 +1,33 @@
+# ── Price Monitor Configuration ───────────────────────────────────────────
+
+# Local LLM model via Ollama (fallback when rule-based extraction fails)
+llm_model: "qwen2.5:7b"
+
+# Timezone for the scheduler (use TZ database name)
+timezone: "America/Vancouver"
+
+# Cron schedule(s) — "minute hour day month day_of_week"
+# Runs at midnight and 9 AM every day
+schedule:
+  - "0 0 * * *"   # midnight  — catches flash sales
+  - "0 9 * * *"   # 9 AM      — catches morning deals
+
+# ── Telegram ───────────────────────────────────────────────────────────────
+# Setup:
+#   1. Message @BotFather → /newbot → copy the token below
+#   2. Message your bot once
+#   3. Visit https://api.telegram.org/bot<TOKEN>/getUpdates → copy chat id
+telegram:
+  bot_token: "YOUR_BOT_TOKEN_HERE"
+  chat_id: "YOUR_CHAT_ID_HERE"
+
+# ── Products to monitor ────────────────────────────────────────────────────
+products:
+  - name: "Bracken II Extreme 3-in-1 Jacket"
+    url: "https://www.mountainwarehouse.com/ca/bracken-ii-extreme-3-in-1-waterproof-mens-jacket-p17314.aspx/"
+    daily_summary: false   # set true to get the full matrix every day even with no drop
+
+  # Add more products below:
+  # - name: "Some Other Product"
+  #   url: "https://example.com/product-page"
+  #   daily_summary: false
